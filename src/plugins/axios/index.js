@@ -6,6 +6,17 @@ const instance = axios.create({
   timeout: 10000,
 });
 
+instance.interceptors.request.use(
+  (config) => {
+    console.log(config);
+    config.headers["X-AUTH"] = sessionStorage.getItem("token");
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
+
 instance.interceptors.response.use(
   (res) => {
     return res.data;

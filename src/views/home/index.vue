@@ -14,6 +14,9 @@ export default {
   methods: {
     logout() {
       sessionStorage.removeItem("token");
+      this.$router.push({
+        path: "/login",
+      });
     },
   },
   components: {},
