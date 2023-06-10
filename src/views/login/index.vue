@@ -1,8 +1,7 @@
 <template>
   <div>
-    home page
-    <button @click="logout">退出</button>
-    <router-view />
+    login page
+    <button @click="login">登录</button>
   </div>
 </template>
 <script>
@@ -12,8 +11,11 @@ export default {
     return {};
   },
   methods: {
-    logout() {
-      sessionStorage.removeItem("token");
+    login() {
+      sessionStorage.setItem("token", "loginSuccess");
+      this.$router.push({
+        path: "/",
+      });
     },
   },
   components: {},
